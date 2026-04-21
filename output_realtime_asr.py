@@ -1,6 +1,6 @@
+import sounddevice as sd
 from faster_whisper import WhisperModel
 import numpy as np
-import sounddevice as sd
 import queue
 import threading
 from datetime import datetime
@@ -34,6 +34,7 @@ def asr_worker():
     while True:
         data = audio_queue.get()
         audio = np.squeeze(data)
+        audio = np.mean(audio, axis=1)
         buffer = np.concatenate((buffer, audio))
 
         # Wenn genug Audio da dann verarbeiten
@@ -70,5 +71,15 @@ def asr_worker():
 if __name__ == "__main__":
     threading.Thread(target=asr_worker, daemon=True).start()
 
-    with sd.InputStream(callback=audio_callback, channels=1, samplerate=SAMPLE_RATE):
-        input("Recording... Press Enter to stop.")
+    device = "Kopfhörer (Realtek(R) Audio)"
+
+    with sd.InputStream(
+        device=device,
+        samplerate=48000,
+        channels=2,
+        dtype='float32',
+        latency='low',
+        blocksize=1024,
+        extra_settings=sd.WasapiSettings(loopback=True)
+    ):
+        input("Recording system audio...")
