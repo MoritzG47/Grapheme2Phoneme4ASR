@@ -1,0 +1,11 @@
+[project]
+name = "whisperlokal"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "faster-whisper>=1.2.1",
+    "numpy>=2.4.4",
+    "sounddevice>=0.5.5",
+]
