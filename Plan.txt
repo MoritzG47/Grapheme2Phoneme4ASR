@@ -1,0 +1,1 @@
+Whisper ASR -> LLM erkennt Unsinn -> Unsinn wird zu IPA mit KI (um auch unbekannte Wörter/Fachwörter umzuwandeln) -> IPA Ähnlichkeiten werden LLM angeboten und Vorschlag der am meisten Sinn ergibt wird genommen
