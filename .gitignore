@@ -12,7 +12,5 @@ wheels/
 # Data
 Transkripts/
 test.py
-traindata/
-byt5_g2p/checkpoint-500
-byt5_g2p/checkpoint-1000
-byt5_g2p/checkpoint-1500
+traindata/dewiktionary-latest-pages-articles.xml
+byt5_g2p/
